@@ -51,7 +51,9 @@ function! s:InSpecFile()
 endfunction
 
 function! s:RspecCommand()
-  if s:RspecCommandProvided() && s:IsMacGui()
+  if s:RspecCommandProvided() && s:ForceVimCommand()
+    let l:command = g:rspec_command
+  elseif s:RspecCommandProvided() && s:IsMacGui()
     let l:command = s:GuiCommand(g:rspec_command)
   elseif s:RspecCommandProvided()
     let l:command = g:rspec_command
@@ -62,6 +64,10 @@ function! s:RspecCommand()
   endif
 
   return l:command
+endfunction
+
+function! s:ForceVimCommand()
+  return exists("g:force_vim_command") && g:force_vim_command
 endfunction
 
 function! s:RspecCommandProvided()
