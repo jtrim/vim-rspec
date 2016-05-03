@@ -77,6 +77,17 @@ Instead use the `os_x_iterm2` runner, configure it like so:
 let g:rspec_runner = "os_x_iterm2"
 ```
 
+### Not using a runner
+
+If you use MacVim, but want to still run `g:rspec_command` within the vim
+runtime, set:
+
+```vim
+let g:force_vim_command = 1
+```
+
+You'll want to do this if you're using vim-dispatch in tandem with MacVim.
+
 ## Running tests
 
 Tests are written using [`vim-vspec`](https://github.com/kana/vim-vspec)
